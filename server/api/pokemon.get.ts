@@ -7,16 +7,15 @@ const RANGE = 50;
 export default defineEventHandler(async () => {
     // select two similarly ranked in elo pokemon
     const start = random(NUM_POKEMON - RANGE);
-    const offset = random(RANGE - 1) + 1;
+    const offset = random(RANGE - 2) + 2;
 
-    const pokemon1 = await prisma.pokemon.findFirstOrThrow({
+    const [pokemon1, pokemon2] = await prisma.pokemon.findMany({
         orderBy: { elo: "desc" },
-        skip: start
-    });
-
-    const pokemon2 = await prisma.pokemon.findFirstOrThrow({
-        orderBy: { elo: "desc" },
-        skip: start + offset
+        where: {
+            id: {
+                in: [start, start + offset]
+            }
+        }
     });
 
     const matchup = await prisma.matchup.create({
