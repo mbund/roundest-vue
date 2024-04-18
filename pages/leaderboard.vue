@@ -15,10 +15,12 @@
         <div class="flex border-b px-4 items-center justify-between">
           <div class="flex items-center gap-4">
             {{ p.rank }}.
-            <PokemonImage :id="p.id" />
-            {{ p.name.replace(/./, c => c.toUpperCase()) }}
+            <a :href="`https://pokemondb.net/pokedex/${p.id}`">
+              <PokemonImage :id="p.id" />
+            </a>
+            <a :href="`https://pokemondb.net/pokedex/${p.id}`">{{ p.name.replace(/./, c => c.toUpperCase()) }}</a>
           </div>
-          <div>{{ p.elo }}</div>
+          <div>{{ p.elo }} Elo</div>
         </div>
       </div>
     </div>
