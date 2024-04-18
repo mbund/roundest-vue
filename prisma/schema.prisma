@@ -1,0 +1,25 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Pokemon {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  elo      Int       @default(1000)
+  MatchupA Matchup[] @relation(name: "a")
+  MatchupB Matchup[]
+}
+
+model Matchup {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  pokemonId1 Int
+  pokemon1   Pokemon  @relation(fields: [pokemonId1], references: [id], name: "a")
+  pokemonId2 Int
+  pokemon2   Pokemon  @relation(fields: [pokemonId2], references: [id])
+}
