@@ -19,7 +19,7 @@ async function vote(winnerPokemonId: number) {
 <template>
   <div class="h-full min-h-screen w-screen flex flex-col items-center justify-between">
     <div class="flex flex-col grow justify-center">
-      <h1 class="flex justify-center mb-3">Which Pokémon is rounder?</h1>
+      <h1 class="flex justify-center mb-6">Which Pokémon is rounder?</h1>
       <div v-if="data" class="flex gap-8">
         <button @click="vote(data.pokemon1.id)">
           <VotePokemon v-bind="data.pokemon1" />

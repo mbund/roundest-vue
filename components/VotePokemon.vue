@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div
+    class="rounded-lg border border-slate-800 p-2 bg-card text-card-foreground shadow-xl cursor-pointer transition-transform duration-200 hover:scale-95 active:scale-90">
     {{ name }} ({{ id }})
     <div class="w-[200px] h-[200px] bg-red">
       <img width="200" height="200" :title="`Vote for ${name} (${id}), ${props.elo} ELO`" :src="imageUrl">

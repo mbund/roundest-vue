@@ -10,9 +10,9 @@
         &gt;&gt;
       </NuxtLink>
     </div>
-    <div class="flex flex-col w-full max-w-2xl border">
+    <div class="flex flex-col w-full max-w-2xl divide-solid divide-y divide-slate-800">
       <div v-for="p in pokemon?.top">
-        <div class="flex border-b px-4 items-center justify-between">
+        <div class="flex px-4 items-center justify-between">
           <div class="flex items-center gap-4">
             {{ p.rank }}.
             <a :href="`https://pokemondb.net/pokedex/${p.id}`">
@@ -43,6 +43,6 @@ const { data: pokemon } = await useLazyFetch(`/api/leaderboard`, {
 
 <style>
 .disabled {
-  @apply text-gray-400 pointer-events-none;
+  @apply text-slate-800/50 pointer-events-none;
 }
 </style>
